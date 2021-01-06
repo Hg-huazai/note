@@ -1,5 +1,7 @@
 JSON-handle    谷歌插件
 
+vsc  debug    -》   f5快捷键     ctrl+shift+d
+
 双向数据绑定原理：采用数据劫持结合发布者-订阅者模式的方式，通过Object.defineProperty()来劫持各个属性的setter，getter，在数据变动时发布消息给订阅者，触发相应的监听函数。
 
 ## filter/map/reduce   一定要去了解
@@ -72,7 +74,7 @@ const app = new Vue({
 
 
 
-computed会比methops的性能会好一点，methops调用几次就会执行几次，没有缓存的，computed再多次调用的时候只会执行一次
+computed会比methops的性能会好一点，methops调用几次就会执行几次，没有缓存的，computed会进行判断，如果发现数据有改变的话就会重新调用
 
 #### 
 
@@ -159,7 +161,7 @@ for(var i = 0; i<5; i++){
 
 #### 4.unshift();  在数组最前面添加元素可添加多个 ; unshift(...item);/ unshift('a','b','c')
 
-#### 5.splisce();  删除/替换/插入元素
+#### 5.splice();  删除/替换/插入元素
 
 第一个参数： 是表示从数组的第几个元素开始
 

@@ -35,6 +35,23 @@ $.post({
         console.log(data)
     }
 })
+
+
+
+//--------------------------------
+         var url = "/sku/add.do";
+         var params ={
+             "marketPrice" : m,
+             "skuPrice" : p,
+             "stockInventory" : i,
+             "skuUpperLimit" : l,
+             "deliveFee" : f,
+             "id" : skuId
+         };
+    
+         $.post(url,params,function(data){alert(data.message)},"json");
+        //会自动封装js传来的params参数到Sku对象中
+
 ```
 
 ```js
