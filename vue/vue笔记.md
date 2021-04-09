@@ -129,7 +129,7 @@ if 与 for 没有块级作用域   所以要用let   要么就要用闭包了
 
 ```js
 for(var i = 0; i<5; i++){
-    console.log(i)
+    console.log(i);
     //闭包(函数有一个属于自己的作用域的与外面的没有影响)   //外面的for的i对函数的i没有任何的影响的，因为调用函数的时候就已经传入i了，不会在改变了// 甚至函数的参数i，可以是其他东西，num、name...	
     (function(i){
         console.log(i)
