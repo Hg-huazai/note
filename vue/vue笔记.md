@@ -20,7 +20,7 @@ reduce： 返回一个结果
 
 
 
-#### es6
+## es6
 
 ```js
 for (let i in books) {
@@ -35,7 +35,7 @@ for (let book of books) {
 
 
 
-### v-once: 
+## v-once: 
 
 v-once指令是指展示一遍，不会改变（不会再随data的数据改变了）
 
@@ -45,7 +45,7 @@ v-once指令是指展示一遍，不会改变（不会再随data的数据改变�
 
 
 
-### 计算属性：
+## 计算属性：
 
 ```html
 <view>{{allname}}</view>
@@ -78,7 +78,7 @@ computed会比methops的性能会好一点，methops调用几次就会执行几�
 
 #### 
 
-#### 计算属性的setter和getter
+## 计算属性的setter和getter
 
 ```
 const app = new Vue({
@@ -123,7 +123,8 @@ es5的var是没有块级作用域的，es6的let是有块级作用域的
 
 ## es6
 
-##### 作用域
+- ##### 作用域
+
 
 if 与 for 没有块级作用域   所以要用let   要么就要用闭包了
 
@@ -151,17 +152,23 @@ for(var i = 0; i<5; i++){
 
 
 
-### 数组的响应式
+- ### 数组的响应式
 
-#### 1.push();   向数组后面追加元素
 
-#### 2.pop();   删除数组最后一个元素
+- #### 1.push();   向数组后面追加元素
 
-#### 3.shift();    删除数组第一个元素
 
-#### 4.unshift();  在数组最前面添加元素可添加多个 ; unshift(...item);/ unshift('a','b','c')
+- #### 2.pop();   删除数组最后一个元素
 
-#### 5.splice();  删除/替换/插入元素
+
+- #### 3.shift();    删除数组第一个元素
+
+
+- #### 4.unshift();  在数组最前面添加元素可添加多个 ; unshift(...item);/ unshift('a','b','c')
+
+
+- #### 5.splice();  删除/替换/插入元素
+
 
 第一个参数： 是表示从数组的第几个元素开始
 
@@ -173,37 +180,47 @@ for(var i = 0; i<5; i++){
 
 {
 
-#### 	vue 内部的 set替换方法
+- #### 	vue 内部的 set替换方法
 
-##### 	set(要修改的对象，索引值，修改后的值)
 
-##### 	vue.set(this.array, 0, 'aaa';)
+- ##### 	set(要修改的对象，索引值，修改后的值)
+
+
+- ##### 	vue.set(this.array, 0, 'aaa';)
+
 
 }
 
-#### 6.sort();   排序	
-
-#### 7.reverse();   数组反转
+- #### 6.sort();   排序	
 
 
-
-#### 8.通过索引来修改元素不是响应式的；
+- #### 7.reverse();   数组反转
 
 
 
 
-
-#### 背景图片高斯模糊
-
-#### css
-
-#### filter： blur(10rpx);   数值越大越模糊
+- #### 8.通过索引来修改元素不是响应式的；
 
 
 
 
 
-#### promise是个类 所以需要new   （异步操作可使用promise处理）
+
+- #### 背景图片高斯模糊
+
+
+- #### css
+
+
+- #### filter： blur(10rpx);   数值越大越模糊
+
+
+
+
+
+
+- #### promise是个类 所以需要new   （异步操作可使用promise处理）
+
 
 参数本身是个函数   
 
@@ -256,45 +273,7 @@ Promise.all({
 
 
 
-## Vuex
-
-##### 父传子  props
-
-npm install vuex --save
-
-```js
-const store = new Vuex.Store({
-    state:{
-        //状态 其他页面获取（$store.state.counter）
-        counter: '100
-    },
-    mutations: {
-        //	只要修改state都会经过mutations
-        //方法   获取其他页面事件($store.commit('addition'))   谷歌跟踪（Devtools)
-        add(){
-            $store.commit('addition') 
-        }
-    },
-    actions: {
-        
-    },
-    getters: {
-        //类似于计算属性   其他页面获取（$store.getters.pingfang）
-        pingfang(state){
-            return state.counter * state.counter
-        }
-    },
-    modules: {
-        
-    }
-})
-```
-
-
-
-
-
-# axios
+## axios
 
 安装插件
 
@@ -543,3 +522,132 @@ replace也是没有返回功能
 ![image-20200830000039259](C:\Users\Hg-huazai\AppData\Roaming\Typora\typora-user-images\image-20200830000039259.png)
 
 ![image-20200830000135486](C:\Users\Hg-huazai\AppData\Roaming\Typora\typora-user-images\image-20200830000135486.png)
+
+
+
+## mixins(混入)
+
+- 解析
+
+  - (混入)是一种分发Vue 组件中可复用功能的非常灵活的方式。混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将被混入该组件本身的选项
+
+- 使用
+
+  - ```js
+    // mixin.js  定义一个混入对象
+    
+    export const myMixin = {
+        data(){
+            return {
+                num:1,
+            }
+        },
+        created(){
+            this.hello();
+        },
+        methods: {
+            hello(){
+                console.log('hello')
+            }
+        }
+    }
+    
+    ```
+
+  - ```vue
+    //把混入对象混入到当前的组件中
+    <template>
+    	<div class="template1">
+            组件1
+        </div>
+    </template>
+    <script>
+        import {myMixin} from '@assets/mixin.js'    //引入
+    	export default {
+            mixins: [myMixin],
+        }
+    </script>
+    ```
+
+- 特点
+
+  - 方法和参数在各组件中不共享
+
+    - ```js
+      //混入对象中的参数num
+      export const myMixin = {
+          data(){
+              return {
+                  num:1,
+              }
+          },
+          created(){
+              this.hello();
+          },
+          methods: {
+              hello(){
+                  console.log('hello')
+              }
+          }
+      }
+      
+      ```
+
+    - ```vue
+      //组件1中的参数num进行+1操作
+      <template>
+      	<div class="template1">
+             template1里的num:{{num}}
+          </div>
+      </template>
+      <script>
+          import {myMixin} from '@assets/mixin.js'    //引入
+      	export default {
+              mixins: [myMixin],
+              created(){
+                  this.num++;
+              }
+          }
+      </script>
+      ```
+
+    - ```vue
+      //组件2中的参数num未进行任何操作
+      <template>
+      	<div class="template1">
+             template2里的num:{{num}}
+          </div>
+      </template>
+      <script>
+          import {myMixin} from '@assets/mixin.js'    //引入
+      	export default {
+              mixins: [myMixin],
+              created(){
+                 // this.num++;
+              }
+          }
+      </script>
+      ```
+
+    - ```vue
+      //查看打印
+      
+      	template1 里的num:2
+      	template2 里的num:1
+      ```
+
+    - 大家可以看到，我在组件1里改变了num里面的值，组件2中的num值还是混入对象里的初始值
+
+  - 值为对象的选项，如果methods，components 等，选项会被合并，这样冲突的组件会覆盖混入对象的
+
+  - 值为函数的选项，如created，mounted等，就会被合并调用，混合对象里的钩子函数在组件里的钩子函数之前调用
+
+- 区别
+
+  - 与Vuex的区别
+    - Vuex：用来做状态管理的，里面定义的变量在每个数组的中均可以使用和修改，在任一组件中修改此变量的值之后，其他组件中此变量的值也会随之修改
+    - mixin：可以定义共用的变量，在每个组件中使用，引入组件中之后，各个变量是相互独立的，值的修改在组件中不会相互影响的
+  - 与公共组件的区别
+    - 组件：在父组件中引入组件，相当于在父组件中开辟一块独立的空间供子组件使用，然后根据props来传值，但本质上两者是相对独立的
+    - mixin：则是在引入组件之后与组件中的对象和方法进行合并，相当于扩展了父组件的对象和方法，可以理解为形成了一个新的组件。
+
