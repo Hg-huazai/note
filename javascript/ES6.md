@@ -2,6 +2,8 @@
 
 ​	引入babel.js
 
+简而言之，babel就可以让我们当前的项目中随意的使用这些最新的ES6和ES7的语法，说白啦，就是把各种JavaScript千奇百怪的写法，统统转为浏览器可以好认的写法。
+
 在线编译（需要时间，不是很推荐）
 
 ```html
@@ -76,10 +78,10 @@ JSON.parse()    //字符串=》json
 ```js
 let str = 'http:// 12jdjdkjkjj'
         if(str.startsWith('http://')){
-          console.log(true)
+          console.log(true)   //true
         }
 		 if(str.endsWith('http://')){
-          console.log(true)
+          console.log(true)   //undefined
         }
 ```
 
@@ -203,14 +205,15 @@ genObj.next();   //b
       3. arr：被查找的数组
 
    7. ```js
-      const myArr=[1,2,3,4,5,6];
-      var v=myArr.find((value,index,arr)=>{
+      const myArray=[1,2,3,4,5,6];
+      var v=myArray.find((value,index,arr)=>{
           return index==4
       });
       console.log(v);// 5
       ```
 
    8. ```js
+      //箭头函数
       const myArray = [1,2,4,5,6];
       var A= myArray.find(value=>{
       	value>4
@@ -249,11 +252,12 @@ genObj.next();   //b
 
    5. ```js
       数组去从
-      var myArr = [1,3,4,5,6,3,7,4];
-      console.log(myArr.filter((value,index,arr)=>arr.indexOf(value)===index));
-      //[ 1, 3, 4, 5, 6, 7 ]
-      ```
-
+      var myArr = [1,3,4,6,3,7,4,5];
+      var myArr1 = myArr.filter((value,index,arr)=>arr.indexOf(value)===index);
+      console.log(myArr1)
+      //[ 1, 3, 4, 6, 7, 5 ]
+   ```
+      
    6. 
 
 4. 总结：
@@ -279,7 +283,7 @@ every() 方法使用指定函数检测数组中的所有元素：
 ```js
 //购物车全选问题
 当商品全都选中的时候，全选才扣上；（也就是v.checked都为true时候）
-空数组调用every(),会返回false；
+空数组调用every(),会返回true；
 
 const allChecked = cart.length?cart.every(v=>v.checked):false;
 ```
