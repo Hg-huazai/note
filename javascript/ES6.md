@@ -207,11 +207,13 @@ genObj.next();   //b
    7. ```js
       const myArray=[1,2,3,4,5,6];
       var v=myArray.find((value,index,arr)=>{
+        console.log(arr)
           return index==4
+        
       });
-      console.log(v);// 5
+   console.log(v);// 5
       ```
-
+      
    8. ```js
       //箭头函数
       const myArray = [1,2,4,5,6];
@@ -256,9 +258,10 @@ genObj.next();   //b
       var myArr1 = myArr.filter((value,index,arr)=>arr.indexOf(value)===index);
       console.log(myArr1)
       //[ 1, 3, 4, 6, 7, 5 ]
-   ```
+      //arr.indexOf(value) 返回首次出现的位置
+      ```
       
-   6. 
+   6. indexOf() 方法可==返回==某个指定的字符串值在字符串中==首次出现的位置==。
 
 4. 总结：
    `1.find()与findIndex()参数与用法相同，不同的是find返回元素，findIndex返回索引；找不到时find返回undefined，findIndex返回-1.`
