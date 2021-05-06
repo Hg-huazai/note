@@ -4,7 +4,8 @@
 2. Session比Cookie更具有安全性
 3. Session占用服务器性能，Session过多，增加服务器压力
 4. 单个Cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个Cookie
-5. sessionStorage、localStorage、cookie都是在浏览器端存储的数据
+5. sessionStorage和localStorage虽然也有存储大小的限制，但比cookie大得多，可以达到**==5M==**或更大
+6.  sessionStorage、localStorage、cookie都是在浏览器端存储的数据
 
 ## Cookie
 

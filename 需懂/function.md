@@ -105,5 +105,33 @@
   用for...in循环会获取到原型链上的可枚举属性，不过可以使用hasOwnProperty()方法过滤掉。
   ```
 
+## Object.defineProperty()（vue双向绑定）
 
-  
+Object.defineProperty(obj,prop,descriptor)
+
+- 参数(3个)
+
+  - 第一个obj：要定义的属性对象
+  - 第二个prop：要定义或修改的属性
+  - 第三个descriptor：具体改变的方法
+
+- 简单地说：就是用这个方法来定义一个值。当调用时我们使用了它里面的get方法，当我们给这个属性赋值时，又用到了它里面的set方法；
+
+- ```js
+  var obj = {};
+  Objcet.defineProperty(obj, 'hello',{
+    get:function(){
+      console.log('调用了get方法')
+    },
+    set:function(newVal){
+      console.log('调用了set方法，方法值是'+newVal);
+    }
+  });
+  obj.hello;  //'调用了get方法'
+  obj.hello='hi'  //'调用了set方法，方法值是hi'
+  ```
+
+- 
+
+
+

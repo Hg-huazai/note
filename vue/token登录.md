@@ -14,3 +14,23 @@ https://blog.csdn.net/weixin_33943347/article/details/91450659
 
 
 axios请求拦截
+
+使用token请求
+
+在登录的时候保存token
+
+```js
+window.sessionStorage.setItem('cat_token', res.data.token)
+```
+
+发起请求时带上token
+
+```js
+function getInfo(url, params) {
+  const token = window.sessionStorage.getItem('cat_token')
+  axios.post(url, params, { headers: {  Authorization: ` ${token}`  } }).then((res) => {
+    console.log(res)
+  })
+}
+```
+
