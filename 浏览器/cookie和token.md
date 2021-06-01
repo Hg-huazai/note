@@ -1,0 +1,1 @@
+第一次登录的时候，会保存用户在session中，同时返回session给用户保存在cookie，以后每次请求都是携带cookie去访问
