@@ -79,10 +79,6 @@ component:W
 
 
 
-
-
-
-
 我们运用router-link来写
 
 把需要渲染的东西放到router-view里面渲染
@@ -91,7 +87,7 @@ component:W
 <router-view></router-view>
 ```
 
-### 编程是导航
+### 编程式导航
 
 点击改变路径
 
